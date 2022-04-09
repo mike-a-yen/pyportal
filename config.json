@@ -1,0 +1,10 @@
+{
+    "timers": [300, 600, 1500, 3000],
+    "key_press": {"long": 0.4},
+    "sound": {
+        "end": "sounds/whistle.wav",
+        "start": "sounds/start.wav",
+        "stop_after": 4
+    },
+    "reverse_keys": true
+}
