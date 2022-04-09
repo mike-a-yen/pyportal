@@ -4,12 +4,11 @@ import time
 import asyncio
 import board
 import busio
-import displayio
 
 from adafruit_neokey.neokey1x4 import NeoKey1x4
 from adafruit_pyportal import PyPortal
 
-from display import Display, COLORS
+from display import Display
 from timer import Timer
 
 
@@ -37,11 +36,6 @@ class KeyPressTracker:
             elif not self.debounce:  # short press ignore debounce
                 self.app.timers[self.idx].toggle()
             self.debounce = True
-
-
-def rgb_to_hex(rgb):
-    hexstr = '%02x%02x%02x' % rgb
-    return hex(int(hexstr, 16))
 
 
 class AppManager:
@@ -88,13 +82,13 @@ class AppManager:
 
     def update_lights(self, timer_state, i):
         if timer_state.out_of_time:
-            self.neokeys.pixels[i] = COLORS['red']
+            self.neokeys.pixels[i] = self.config['key_colors']['out_of_time']
         elif timer_state.running:
-            self.neokeys.pixels[i] = COLORS['orange']
+            self.neokeys.pixels[i] = self.config['key_colors']['running']
         elif not timer_state.running and timer_state.remaining < timer_state.length:
-            self.neokeys.pixels[i] = COLORS['yellow']
+            self.neokeys.pixels[i] = self.config['key_colors']['paused']
         else:
-            self.neokeys.pixels[i] = COLORS['green']
+            self.neokeys.pixels[i] = self.config['key_colors']['ready']
 
 
 async def main():

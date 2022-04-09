@@ -1,4 +1,5 @@
 {
+    "title": "tiny timer",
     "timers": [300, 600, 1500, 3000],
     "key_press": {"long": 0.4},
     "sound": {
@@ -6,5 +7,30 @@
         "start": "sounds/start.wav",
         "stop_after": 4
     },
-    "reverse_keys": true
+    "reverse_keys": true,
+    "key_colors": {
+        "ready": [36, 200, 36],
+        "paused": [122, 122, 6],
+        "out_of_time": [200, 24, 15],
+        "running": [253, 164, 119]
+    },
+    "display_colors": {
+        "header": [218, 174, 70],
+        "background": [158, 110, 87],
+        "text": [255, 255, 255],
+        "timers": {
+            "fill": {
+                "out_of_time": [252, 118, 121],
+                "ready": [169, 206, 128],
+                "running": [169, 206, 128],
+                "paused": [251, 221, 4]
+            },
+            "border": {
+                "out_of_time": [227, 84, 86],
+                "ready": [150, 201, 91],
+                "running": [150, 201, 91],
+                "paused": [196, 173, 0]
+            }
+        }
+    }
 }
